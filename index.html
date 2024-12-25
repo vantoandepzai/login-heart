@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure login portal with user authentication">
+    <meta name="theme-color" content="#a5d8ff">
+    <title>Login Portal</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://esm.sh/js-loading-overlay@1.1.0"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-8">LOGIN</h1>
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300">
+            </div>
+            <div class="text-sm">
+                <a href="https://vantoandepzai.github.io/heart-animation/" class="text-gray-500 hover:text-gray-700">Forgot your password?</a>
+            </div>
+            <button type="submit"
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#a5d8ff] hover:bg-[#74c0fc] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300">
+                <a href="#">
+                LOGIN
+            </a>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            JsLoadingOverlay.show({
+                'overlayBackgroundColor': '#666666',
+                'overlayOpacity': '0.8',
+                'spinnerIcon': 'ball-spin',
+                'spinnerColor': '#a5d8ff',
+                'spinnerSize': '2x',
+                'overlayIDName': 'overlay'
+            });
+
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Add your login logic here
+            } catch (error) {
+                console.error('Login failed:', error);
+            } finally {
+                JsLoadingOverlay.hide();
+            }
+        });
+    </script>
+</body>
+</html>
